@@ -5,9 +5,9 @@ export default {
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        sm: "3rem",
-        lg: "5rem",
+        DEFAULT: "2rem",
+        sm: "5rem",
+        lg: "6rem",
         xl: "7rem",
         "2xl": "9rem",
       },

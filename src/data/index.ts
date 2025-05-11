@@ -1,8 +1,7 @@
 import { v4 as uuid } from "uuid";
-import {IProductData } from "../interfaces";
+import { IProductData, IFormInput } from "../interfaces";
 
-
-export const productList:IProductData[] = [
+export const productList: IProductData[] = [
   {
     id: uuid(),
     title: "Nike Shoes",
@@ -174,7 +173,7 @@ export const formInputsList: IFormInput[] = [
   },
 ];
 
-export const colors: string[] = [
+/* export const colors: string[] = [
   "#a855f7",
   "#2563eb",
   "#84D2C5",
@@ -232,3 +231,4 @@ export const categories: ICategory[] = [
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
 ];
+ */

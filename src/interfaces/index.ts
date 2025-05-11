@@ -13,3 +13,10 @@ export interface IProductData {
   colors: string[];
   category: ICategory;
 }
+
+export interface IFormInput {
+  id: string;
+  name: string;
+  label: string;
+  type: string;
+}
