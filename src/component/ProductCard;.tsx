@@ -5,7 +5,7 @@ import Button from "./ui/Button";
 interface IProps {
   product: IProductData;
 }
-const SideBar = ({ product }: IProps) => {
+const ProductCard = ({ product }: IProps) => {
   const { title, description, imageURL, price,category } = product;
   return (
     <div className="flex flex-col border-2 border-gray-400 p-3 rounded-md">
@@ -46,4 +46,4 @@ const SideBar = ({ product }: IProps) => {
     </div>
   );
 };
-export default SideBar;
+export default ProductCard;

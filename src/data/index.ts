@@ -173,7 +173,7 @@ export const formInputsList: IFormInput[] = [
   },
 ];
 
-/* export const colors: string[] = [
+ export const colors: string[] = [
   "#a855f7",
   "#2563eb",
   "#84D2C5",
@@ -186,7 +186,9 @@ export const formInputsList: IFormInput[] = [
   "#000000",
   "#645CBB",
 ];
+ 
 
+/*
 export const categories: ICategory[] = [
   {
     id: uuid(),
