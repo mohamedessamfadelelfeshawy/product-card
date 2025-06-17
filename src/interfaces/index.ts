@@ -1,3 +1,4 @@
+import { TypeName } from "../types";
 
 export interface ICategory {
   name: string;
@@ -16,7 +17,7 @@ export interface IProductData {
 
 export interface IFormInput {
   id: string;
-  name: "title" | "description" | "imageURL" | "price";
+  name: TypeName;
   label: string;
   type: string;
 }

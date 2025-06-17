@@ -5,7 +5,7 @@ interface IProduct {
   price: string;
 }
 export const productValidation = (product: IProduct) => {
-  const validImg = /https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg|bmp)(\?.*)?$/.test(product.imageURL); 
+  const validImg = /^(ftp|http|https):\/\/[^ "]+$/.test(product.imageURL); 
   const errors: IProduct = {
     title: "",
     description: "",

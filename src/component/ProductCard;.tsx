@@ -6,14 +6,20 @@ import Button from "./ui/Button";
 interface IProps {
   product: IProductData;
   setEdit: (product: IProductData) => void;
+  setIndexEdit: (idx: number) => void;
+  setTempColorEdit: (arrColor:string[]) => void;
   openEdit: () => void;
+
+  indexEdit: number;
 }
-const ProductCard = ({ product,setEdit,openEdit }: IProps) => {
+const ProductCard = ({ product,setEdit,openEdit,indexEdit,setIndexEdit,setTempColorEdit}: IProps) => {
   const { title, description, imageURL, price, category, colors } = product;
   /* ----------------HANNDLER------------------- */
   const editProduct = () => {
     setEdit(product);  
     openEdit();
+    setIndexEdit(indexEdit);
+    setTempColorEdit(colors);
   }
   /* -----------------RENDER------------------ - */
   const renderProductColors = colors.map((color) => (
