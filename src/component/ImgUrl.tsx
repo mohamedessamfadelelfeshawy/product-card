@@ -8,4 +8,3 @@ const ImgUrl = ({ src, alt, className }: IProps) => {
 };
 export default ImgUrl;
 
-<div className="w-full "></div>

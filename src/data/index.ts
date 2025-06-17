@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { IProductData, IFormInput } from "../interfaces";
+import { IProductData, IFormInput, ICategoryData } from "../interfaces";
 
 export const productList: IProductData[] = [
   {
@@ -66,7 +66,7 @@ export const productList: IProductData[] = [
     imageURL:
       "https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
     price: "1500",
-    colors: [],
+    colors: ["#645CBB", "#FF0032", "#820000", "#13005A", "#1F8A70"],
     category: {
       name: "PC Desktop",
       imageURL:
@@ -137,7 +137,7 @@ export const productList: IProductData[] = [
     imageURL:
       "https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
     price: "1500",
-    colors: [],
+    colors: ["#645CBB", "#FF0032", "#820000", "#13005A", "#1F8A70"],
     category: {
       name: "PC Desktop",
       imageURL:
@@ -173,7 +173,7 @@ export const formInputsList: IFormInput[] = [
   },
 ];
 
- export const colors: string[] = [
+export const colors: string[] = [
   "#a855f7",
   "#2563eb",
   "#84D2C5",
@@ -186,10 +186,9 @@ export const formInputsList: IFormInput[] = [
   "#000000",
   "#645CBB",
 ];
- 
 
-/*
-export const categories: ICategory[] = [
+
+export const categories: ICategoryData[] = [
   {
     id: uuid(),
     name: "Nike",
@@ -233,4 +232,4 @@ export const categories: ICategory[] = [
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
 ];
- */
+ 

@@ -25,7 +25,7 @@ export const productValidation = (product: IProduct) => {
     product.description.length > 900
   ) {
     errors.description =
-      "Product description must be between 10 and 900 characters!";
+      "Product desc must be between 10 and 900 characters!";
   }
   if (!product.imageURL.trim() || !validImg) {
     errors.imageURL = "Valid image URL is required";

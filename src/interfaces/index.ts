@@ -1,4 +1,5 @@
-interface ICategory {
+
+export interface ICategory {
   name: string;
   imageURL: string;
 }
@@ -18,4 +19,10 @@ export interface IFormInput {
   name: "title" | "description" | "imageURL" | "price";
   label: string;
   type: string;
+}
+
+export interface ICategoryData {
+  id: string|undefined,
+  name: string,
+  imageURL: string,
 }
