@@ -1,5 +1,5 @@
 import { Fragment, useState, ChangeEvent, FormEvent } from "react";
-import ProductCard from "./component/ProductCard;";
+import ProductCard from "./component/ProductCard";
 import { categories, colors, formInputsList, productList } from "./data";
 import Modal from "./component/ui/Modal";
 import InputForm from "./component/ui/InputForm";
@@ -9,16 +9,18 @@ import ErrorMassage from "./component/ErrorMassage";
 import ProductColor from "./component/ProductColor";
 import { v4 as uuid } from "uuid";
 import Select from "./component/ui/Select";
-
+import Button from "./component/ui/Button";
+import IsUpdateEdit from "./component/IsUpdateEdit";
 function App() {
   /* -----------------DEFAULT------------------- */
-  const dataObgect = {
+  const dataObject = {
     title: "",
     description: "",
     imageURL: "",
     price: "",
     colors: [],
     category: {
+      id: "",
       name: "",
       imageURL: "",
     },
@@ -33,20 +35,32 @@ function App() {
   /* -----------------STATE------------------- */
   const [allProduct, setallProduct] = useState<IProductData[]>(productList);
   const [isOpen, setIsOpen] = useState(false);
-  const [product, setProduct] = useState<IProductData>(dataObgect);
+  const [mesRemoveProduct, setMesRemoveProduct] = useState(false);
+  const [product, setProduct] = useState<IProductData>(dataObject);
   const [errors, setErrors] = useState(dataError);
   const [tempColor, setTempColor] = useState<string[]>([]);
   const [tempColorEdit, setTempColorEdit] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState(categories[2].id);
-  const [edit, setEdit] = useState<IProductData>(dataObgect);
+  const [selectedCategory, setSelectedCategory] = useState(categories[2]);
+  const [edit, setEdit] = useState<IProductData>(dataObject);
+  const [msgEdit, setMsgEdit] = useState(false);
+  const [msgpost, setMsgpost] = useState(false);
+  const [msgRemove, setMsRemove] = useState(false);
   const [indexEdit, setIndexEdit] = useState<number>(0);
+  const [indexRemove, setIndexRemove] = useState<number>(0);
   const [isopenEdit, setIsopenEdit] = useState(false);
   /* -----------------HANDLER------------------- */
+
   const close = () => {
     setIsOpen(false);
   };
   const open = () => {
     setIsOpen(true);
+  };
+  const mesOpenRemove = () => {
+    setMesRemoveProduct(true);
+  };
+  const mesCloseRemove = () => {
+    setMesRemoveProduct(false);
   };
   const closeEdit = () => {
     setIsopenEdit(false);
@@ -77,15 +91,35 @@ function App() {
     });
   };
   const cancelForm = () => {
-    setProduct(dataObgect);
+    setProduct(dataObject);
     setErrors(dataError);
     setTempColor([]);
     close();
   };
   const cancelEditForm = () => {
-    setEdit(dataObgect);
+    setEdit(dataObject);
     setErrors(dataError);
     closeEdit();
+  };
+  const isEditUpdate = () => {
+    setTimeout(() => {
+      setMsgEdit(false);
+    }, 3000);
+  };
+  const isPostUpdate = () => {
+    setTimeout(() => {
+      setMsgpost(false);
+    }, 3000);
+  };
+  const removeProduct = () => {
+    const copyRemovedData = [...allProduct];
+    copyRemovedData.splice(indexRemove, 1);
+    setallProduct(copyRemovedData);
+    setMsRemove(true);
+    setTimeout(() => {
+    setMsRemove(false);
+    }, 3000);
+    setMesRemoveProduct(false);
   };
   const submitform = (e: FormEvent<HTMLFormElement>) => {
     const { title, description, imageURL, price } = product;
@@ -110,8 +144,10 @@ function App() {
       ...prev,
     ]);
 
-    setProduct(dataObgect);
+    setProduct(dataObject);
     setTempColor([]);
+    setMsgpost(true);
+    isPostUpdate();
     close();
   };
   const submitEditform = (e: FormEvent<HTMLFormElement>) => {
@@ -132,7 +168,8 @@ function App() {
     const copyAllProduct = [...allProduct];
     copyAllProduct[indexEdit] = { ...edit, colors: tempColorEdit };
     setallProduct(copyAllProduct);
-
+    setMsgEdit(true);
+    isEditUpdate();
     closeEdit();
   };
   /* -----------------RENDER------------------ - */
@@ -145,9 +182,10 @@ function App() {
       setIndexEdit={setIndexEdit}
       indexEdit={index}
       setTempColorEdit={setTempColorEdit}
+      mesOpenRemove={mesOpenRemove}
+      setIndexRemove={setIndexRemove}
     />
   ));
-
   const displayInputsEdit = formInputsList.map((input) => (
     <div className="flex flex-col" key={input.id}>
       <label className="my-1 font-medium text-gray-700 " htmlFor={input.id}>
@@ -222,7 +260,6 @@ function App() {
       {color}
     </span>
   ));
-
   return (
     <Fragment>
       <main className="container">
@@ -241,7 +278,7 @@ function App() {
         {/*  // displayProduct */}
         <div
           className=" grid 
-        grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 rounded-2xl
+        grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 rounded-2xl
         gap-2"
         >
           {displayProduct}
@@ -252,25 +289,26 @@ function App() {
             {/* inputs */}
             {displayInputs}
             {/* category */}
+
             <Select
-              selectedId={selectedCategory}
-              setSelectedId={setSelectedCategory}
+              selected={selectedCategory}
+              setSelected={setSelectedCategory}
             />
             {/* colors */}
             <div className="flex  flex-wrap ">{renderProductColors}</div>
             <div className="flex  flex-wrap ">{selectColor}</div>
             {/* btn */}
             <div className="flex items-center space-x-2  ">
-              <button className="bg-blue-600 p-2 rounded-md w-full text-white">
+              <Button className="bg-indigo-700 hover:bg-indigo-800 p-2 rounded-md">
                 Submit
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={cancelForm}
                 type="button"
-                className="bg-gray-600 p-2 rounded-md w-full text-white"
+                className="bg-[#f5f5fa] hover:bg-gray-300 p-2 rounded-md w-full !text-black"
               >
-                Cancle
-              </button>
+                Cancel
+              </Button>
             </div>
           </form>
         </Modal>
@@ -279,24 +317,83 @@ function App() {
           <form action=" " className="space-y-3 " onSubmit={submitEditform}>
             {/* ----render displayInputsEdit--------*/}
             {displayInputsEdit}
+            {/* category */}
+            <Select
+              selected={edit.category}
+              setSelected={(value) => {
+                setEdit({ ...edit, category: value });
+              }}
+            />
             {/* colors */}
             <div className="flex  flex-wrap ">{renderProductColorsEdit}</div>
             <div className="flex  flex-wrap ">{selectColorEdit}</div>
             {/* btn */}
             <div className="flex items-center space-x-2  ">
-              <button className="bg-blue-600 p-2 rounded-md w-full text-white">
+              <Button className="bg-indigo-700 hover:bg-indigo-800 p-2 rounded-md">
                 Submit
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={cancelEditForm}
                 type="button"
-                className="bg-gray-600 p-2 rounded-md w-full text-white"
+                className="bg-[#f5f5fa] hover:bg-gray-300 p-2 rounded-md w-full !text-black"
               >
-                Cancle
-              </button>
+                Cancel
+              </Button>
             </div>
           </form>
         </Modal>
+        {/* mes Remove product */}
+        {mesRemoveProduct && (
+          <Modal
+            title={
+              "Are you sure you want to remove this Product from your Store?"
+            }
+            isOpen={mesRemoveProduct}
+            close={mesCloseRemove}
+          >
+            <p className="text-gray-500 text-sm ">
+              Deleting this product will remove it permanently from your
+              inventory. Any associated data, sales history, and other related
+              information will also be deleted. Please make sure this is the
+              intended action.
+            </p>
+            {/* btn */}
+            <div className="flex items-center space-x-2 mt-4 ">
+              <Button
+                onClick={removeProduct}
+                className="bg-[#c2344d] hover:bg-red-800 p-3 rounded-md  "
+              >
+                Yes,remove
+              </Button>
+              <Button
+                onClick={mesCloseRemove}
+                type="button"
+                className="bg-[#f5f5fa] hover:bg-gray-300 p-3 rounded-md w-full !text-black "
+              >
+                Cancel
+              </Button>
+            </div>
+          </Modal>
+        )}
+        {/* message edit sucess */}
+        {msgEdit && (
+          <IsUpdateEdit
+            className="bg-gray-900"
+            mes={"👏 Product has been updated successfully!"}
+          />
+        )}
+        {msgpost && (
+          <IsUpdateEdit
+            className="bg-gray-900"
+            mes={"👏Product has been added successfully!"}
+          />
+        )}
+        {msgRemove && (
+          <IsUpdateEdit
+            className="bg-[#C2344D]"
+            mes={"👏Product has been deleted successfully!"}
+          />
+        )}
       </main>
     </Fragment>
   );
