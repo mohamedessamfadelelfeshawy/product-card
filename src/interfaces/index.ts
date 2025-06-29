@@ -1,7 +1,7 @@
 import { TypeName } from "../types";
 
 export interface ICategory {
-  id: string;
+  id?: string;
   name: string;
   imageURL: string;
 }
