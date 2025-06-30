@@ -1,7 +1,7 @@
 import { TypeName } from "../types";
 
 export interface ICategory {
-  id?: string;
+  id: string;
   name: string;
   imageURL: string;
 }
@@ -24,7 +24,7 @@ export interface IFormInput {
 }
 
 export interface ICategoryData {
-  id: string,
+  id?: string,
   name: string,
   imageURL: string,
 }
