@@ -24,7 +24,7 @@ export interface IFormInput {
 }
 
 export interface ICategoryData {
-  id?: string,
+  id: string|null,
   name: string,
   imageURL: string,
 }
