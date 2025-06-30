@@ -23,6 +23,7 @@ export const productList: IProductData[] = [
       "#84D2C5",
     ],
     category: {
+      id: uuid(),
       name: "Nike",
       imageURL:
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -38,6 +39,7 @@ export const productList: IProductData[] = [
     price: "500000",
     colors: ["#FF0032", "#2563eb", "#FF6E31"],
     category: {
+      id: uuid(),
       name: "Cars",
       imageURL:
         "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -53,6 +55,7 @@ export const productList: IProductData[] = [
     price: "120000",
     colors: ["#A31ACB", "#3C2A21", "#1F8A70", "#820000", "#FF0032"],
     category: {
+      id: uuid(),
       name: "Cars",
       imageURL:
         "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -68,6 +71,7 @@ export const productList: IProductData[] = [
     price: "1500",
     colors: ["#645CBB", "#FF0032", "#820000", "#13005A", "#1F8A70"],
     category: {
+      id: uuid(),
       name: "PC Desktop",
       imageURL:
         "https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
@@ -94,6 +98,7 @@ export const productList: IProductData[] = [
       "#84D2C5",
     ],
     category: {
+      id: uuid(),
       name: "Nike",
       imageURL:
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -109,6 +114,7 @@ export const productList: IProductData[] = [
     price: "500000",
     colors: ["#FF0032", "#2563eb", "#FF6E31"],
     category: {
+      id: uuid(),
       name: "Cars",
       imageURL:
         "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -124,6 +130,7 @@ export const productList: IProductData[] = [
     price: "120000",
     colors: ["#A31ACB", "#3C2A21", "#1F8A70", "#820000", "#FF0032"],
     category: {
+      id: uuid(),
       name: "Cars",
       imageURL:
         "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -139,6 +146,7 @@ export const productList: IProductData[] = [
     price: "1500",
     colors: ["#645CBB", "#FF0032", "#820000", "#13005A", "#1F8A70"],
     category: {
+      id: uuid(),
       name: "PC Desktop",
       imageURL:
         "https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
